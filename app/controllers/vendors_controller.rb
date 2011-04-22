@@ -21,6 +21,7 @@ class VendorsController < ApplicationController
 
     if @vendor.save
       #respond_with @vendor, notice: "Added Vendor"
+      respond_with @vendor
     else
       render :new #, alert: "Something went wrong"
     end
