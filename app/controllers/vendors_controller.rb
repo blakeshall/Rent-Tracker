@@ -20,9 +20,9 @@ class VendorsController < ApplicationController
     @vendor = Vendor.create(params[:vendor])
 
     if @vendor.save
-      respond_with @vendor, notice: "Added Vendor"
+      #respond_with @vendor, notice: "Added Vendor"
     else
-      render :new, alert: "Something went wrong"
+      #render :new, alert: "Something went wrong"
     end
   end
   
