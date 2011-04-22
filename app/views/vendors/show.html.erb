@@ -13,6 +13,32 @@
 		Monthly
 	<% end %>
 </p>
+<% sum = 0 %>
+<% if @vendor.weekly == true%>
+	<% @vendor.payments.each do |pay|%>
+		<% if pay.created_at.to_date >= Date.today.beginning_of_week and pay.created_at.to_date < Date.today.end_of_week %>
+			<% sum += pay.amount %>
+		<% end %>
+	<% end %>
+	
+	<% if sum >= @vendor.amount %>
+		<p>PAID</p>
+	<% else %>
+		<p>UNPAID</p>
+	<% end %>
+<% else %>
+	<% @vendor.payments.each do |pay|%>
+		<% if pay.created_at.to_date.month >= Date.today.month and pay.created_at.to_date.month < Date.today.month + 1%>
+			<% sum += pay.amount %>
+		<% end %>
+	<% end %>
+	
+	<% if sum >= @vendor.amount %>
+		<p>PAID</p>
+	<% else %>
+		<p>UNPAID</p>
+	<% end %>
+<% end %>
 
 <h3>Payments</h3>
 	<% @recent_payments.each do |p| %>
