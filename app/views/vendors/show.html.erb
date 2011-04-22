@@ -16,7 +16,7 @@
 
 <h3>Payments</h3>
 	<% @recent_payments.each do |p| %>
-		<p>Paid <%= number_to_currency(p.amount) %> at <%= p.created_at %></p>
+		<p>Paid <%= number_to_currency(p.amount) %> at <%= p.created_at.month %>-<%= p.created_at.day%>-<%= p.created_at.year%></p>
 	<% end %>
 
 <% simple_form_for ([@vendor, @vendor.payments.build]) do |f| %>
