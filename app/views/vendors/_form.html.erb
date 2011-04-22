@@ -1,0 +1,12 @@
+<% #SimpleForm.wrapper_tag = :p%>
+<%= simple_form_for @vendor do |f| %>
+<%= f.input :name, :label =>  'Vendor\' name'%>
+<%= f.input :booth, :label => 'Booth Number' %>
+<%= f.input :amount, :label => 'Rent' %>
+<p>
+	<%= f.collection_radio :weekly, [[true, 'Weekly'] ,[false, 'Monthly']], :first, :last %>
+</p>
+
+<%= f.input :notes, :label=> 'Notes' , :input_html => {:rows => '5'}%>
+<%= f.button :submit %>
+<% end %>

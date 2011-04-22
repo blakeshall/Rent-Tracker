@@ -1,0 +1,29 @@
+<h1>Vendors</h1>
+<table id = 'vendors'>
+	<tr>
+		<td><strong>Name</strong></td>
+		<td><strong>Booth</strong></td>
+		<td><strong>Rent</strong></td>
+		<td><strong>Type</strong></td>
+		<td><strong>Payment</strong></td>
+	</tr>
+
+  <% @vendors.each do |vendor| %>
+		<tr>
+        <td><%= link_to vendor.name, vendor %></td>
+				<td><%= vendor.booth %></td>
+				<td><%= number_to_currency(vendor.amount)%></td>
+				<td>
+				<% if vendor.weekly == true %>
+					Weekly
+				<% else %>
+					Monthly
+				<% end %>
+				</td>
+				
+			</tr>
+  <% end %>
+</table>
+
+<%= link_to "New Vendor", new_vendor_path%>
+

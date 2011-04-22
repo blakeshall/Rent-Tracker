@@ -1,0 +1,29 @@
+<h2><%= @vendor.name %></h2>
+
+<div id='notes'>
+	<h2>Notes:</h2>
+	<p><%= @vendor.notes %></p>
+</div>
+<p>Booth Number: <%= @vendor.booth%></p>
+<p>Rent: <%= number_to_currency(@vendor.amount) %></p>
+<p>Type: 
+	<% if @vendor.weekly == true %>
+	 Weekly
+	<% else %>
+		Monthly
+	<% end %>
+</p>
+
+<h3>Payments</h3>
+	<% @recent_payments.each do |p| %>
+		<p>Paid <%= number_to_currency(p.amount) %> at <%= p.created_at %></p>
+	<% end %>
+
+<% simple_form_for ([@vendor, @vendor.payments.build]) do |f| %>
+	<%= f.input :amount, :label => 'Payment amount:' %>
+
+	<%= f.button :submit %>
+<% end %>
+
+<%= link_to 'Edit', edit_vendor_path(@vendor)%>
+<%= link_to 'Delete Vendor', @vendor, :confirm => 'Are you sure you want to delete this vendor?', :method => :delete%>
