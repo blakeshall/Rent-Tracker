@@ -47,15 +47,6 @@ class VendorsController < ApplicationController
     end
   end
   
-  def reset_week
-    @vendors = Vendor.week
-  end
-  
-  def reset_month
-    @vendors = Vendor.month
-  end
-  
-
     
   
   def destroy
