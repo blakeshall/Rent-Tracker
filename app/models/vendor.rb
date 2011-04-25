@@ -20,7 +20,11 @@ class Vendor < ActiveRecord::Base
   end
 
   def paid_up?
-   debt <= 0
+    if debt <= 0
+      true
+    else
+      false
+    end
   end
 
   def debt
