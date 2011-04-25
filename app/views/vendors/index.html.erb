@@ -20,7 +20,13 @@
 					Monthly
 				<% end %>
 				</td>
-				
+				<td>
+					<% if vendor.paid_up? %>
+						PAID
+					<% else %>
+						UNPAID
+					<% end %>
+				</td>
 			</tr>
   <% end %>
 </table>
