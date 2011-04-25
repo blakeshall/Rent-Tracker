@@ -12,7 +12,14 @@ class Vendor < ActiveRecord::Base
   end
 
   def total_paid
-    recent_payments.map(&:amount).reduce(&:+)
+    total = 0
+    recent_payments.each do |payment|
+      total += payment.amount
+    end
+    
+    return total
+    
+    
   end
 
   def paid_up?
