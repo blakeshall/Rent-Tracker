@@ -12,11 +12,7 @@ class Vendor < ActiveRecord::Base
   end
 
   def total_paid
-    if recent_payments.map(&:amount).reduce(&:+) == nil
-      0
-    else
-      recent_payments.map(&:amount).reduce(&:+)
-    end
+    recent_payments.map(&:amount).reduce(&:+)
   end
 
   def paid_up?
