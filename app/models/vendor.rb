@@ -13,8 +13,10 @@ class Vendor < ActiveRecord::Base
 
   def total_paid
     total = 0
-    recent_payments.each do |payment|
-      total += payment.amount
+    if recent_payments != nil 
+      recent_payments.each do |payment|
+        total += payment.amount
+      end
     end
     
     return total
