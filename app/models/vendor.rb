@@ -15,7 +15,9 @@ class Vendor < ActiveRecord::Base
     total = 0
     if recent_payments != nil 
       recent_payments.each do |payment|
-        total += payment.amount
+        if payment.amount != nil
+          total += payment.amount
+        end
       end
     end
     
@@ -25,7 +27,7 @@ class Vendor < ActiveRecord::Base
   end
 
   def paid_up?
-    if debt <= 0
+    if debt <= 0.0
       true
     else
       false
