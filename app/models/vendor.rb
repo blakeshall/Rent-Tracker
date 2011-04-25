@@ -12,17 +12,17 @@ class Vendor < ActiveRecord::Base
   end
 
   def total_paid
-    recent_payments.map(&:amount).reduce(&:+) || 0
-    # total = 0
-    #    if recent_payments != nil 
-    #      recent_payments.each do |payment|
-    #        if payment.amount != nil
-    #          total += payment.amount
-    #        end
-    #      end
-    #    end
-    #    
-    #    return total
+
+    total = 0
+    if recent_payments != nil 
+      recent_payments.each do |payment|
+        if payment.amount != nil
+          total += payment.amount
+        end
+      end
+    end
+
+    return total
     
     
   end
